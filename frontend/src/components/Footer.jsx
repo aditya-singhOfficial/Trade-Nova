@@ -6,20 +6,31 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa6";
 import AppStoreBadge from "../assets/images/appstoreBadge.svg";
 import GooglePlayBadge from "../assets/images/googlePlayBadge.svg";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="w-full flex flex-col items-center bg-[#FBFBFB] mt-32  py-10">
       <div className="w-[75%] flex justify-between">
         <div className="w-[20%] flex flex-col gap-6">
-          <img src={Logo} alt="" className="w-[80%]" />
+          <Link to={"/"}>
+            <img src={Logo} alt="" className="w-[80%]" />
+          </Link>
           <p className="text-[12px] text-[#808080] w-[80%]">
             © 2010 - 2026, Zerodha Broking Ltd. All rights reserved.
           </p>
           <div className="flex gap-4 w-[80%]">
-            <FaXTwitter size={20} color="#808080" />
-            <FaFacebookSquare size={20} color="#808080" />
-            <FaInstagram size={20} color="#808080" />
-            <FaLinkedinIn size={20} color="#808080" />
+            <Link to={"/"}>
+              <FaXTwitter size={20} color="#808080" />
+            </Link>
+            <Link to={"/"}>
+              <FaFacebookSquare size={20} color="#808080" />
+            </Link>
+            <Link to={"/"}>
+              <FaInstagram size={20} color="#808080" />
+            </Link>
+            <Link to={"/"}>
+              <FaLinkedinIn size={20} color="#808080" />
+            </Link>
           </div>
           <div className="flex gap-6 w-[85%]">
             <img src={GooglePlayBadge} alt="" className="w-[45%]" />
@@ -28,51 +39,111 @@ const Footer = () => {
         </div>
         <div className="w-[18%] flex flex-col gap-4">
           <h1 className="text-xl">Account</h1>
-          <h2 className="text-[#808080] text-[14px]">Open demat account</h2>
-          <h2 className="text-[#808080] text-[14px]">Minor demat account</h2>
-          <h2 className="text-[#808080] text-[14px]">NRI demat account</h2>
-          <h2 className="text-[#808080] text-[14px]">HUF demat account</h2>
-          <h2 className="text-[#808080] text-[14px]">Commodity</h2>
-          <h2 className="text-[#808080] text-[14px]">Dematerialisation</h2>
-          <h2 className="text-[#808080] text-[14px]">Fund transfer</h2>
-          <h2 className="text-[#808080] text-[14px]">MTF</h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Open demat account
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Minor demat account
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            NRI demat account
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            HUF demat account
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Commodity
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Dematerialisation
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Fund transfer
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            MTF
+          </h2>
         </div>
         <div className="w-[18%] flex flex-col gap-4">
           <h1 className="text-xl">Support</h1>
-          <h2 className="text-[#808080] text-[14px]">Contact us</h2>
-          <h2 className="text-[#808080] text-[14px]">Support portal</h2>
-          <h2 className="text-[#808080] text-[14px]">
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Contact us
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Support portal
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
             How to file a complaint?
           </h2>
-          <h2 className="text-[#808080] text-[14px]">
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
             Status of your complaints
           </h2>
-          <h2 className="text-[#808080] text-[14px]">Bulletin</h2>
-          <h2 className="text-[#808080] text-[14px]">Circular</h2>
-          <h2 className="text-[#808080] text-[14px]">Z-Connect blog</h2>
-          <h2 className="text-[#808080] text-[14px]">Downloads</h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Bulletin
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Circular
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Z-Connect blog
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Downloads
+          </h2>
         </div>
         <div className="w-[18%] flex flex-col gap-4">
           <h1 className="text-xl">Company</h1>
-          <h2 className="text-[#808080] text-[14px]">About</h2>
-          <h2 className="text-[#808080] text-[14px]">Philosophy</h2>
-          <h2 className="text-[#808080] text-[14px]">Press & media</h2>
-          <h2 className="text-[#808080] text-[14px]">Careers</h2>
-          <h2 className="text-[#808080] text-[14px]">Zerodha Cares (CSR)</h2>
-          <h2 className="text-[#808080] text-[14px]">Zerodha.tech</h2>
-          <h2 className="text-[#808080] text-[14px]">Open source</h2>
-          <h2 className="text-[#808080] text-[14px]">Referral program</h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            About
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Philosophy
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Press & media
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Careers
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Zerodha Cares (CSR)
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Zerodha.tech
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Open source
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Referral program
+          </h2>
         </div>
         <div className="w-[18%] flex flex-col gap-4">
           <h1 className="text-xl">Quick links</h1>
-          <h2 className="text-[#808080] text-[14px]">Upcoming IPOs</h2>
-          <h2 className="text-[#808080] text-[14px]">Brokerage charges</h2>
-          <h2 className="text-[#808080] text-[14px]">Market holidays</h2>
-          <h2 className="text-[#808080] text-[14px]">Economic calendar</h2>
-          <h2 className="text-[#808080] text-[14px]">Calculators</h2>
-          <h2 className="text-[#808080] text-[14px]">Markets</h2>
-          <h2 className="text-[#808080] text-[14px]">Sectors</h2>
-          <h2 className="text-[#808080] text-[14px]">Gift Nifty</h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Upcoming IPOs
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Brokerage charges
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Market holidays
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Economic calendar
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Calculators
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Markets
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Sectors
+          </h2>
+          <h2 className="text-[#808080] text-[14px] hover:text-[#387ED1] cursor-pointer transition-all ease-in-out delay-100">
+            Gift Nifty
+          </h2>
         </div>
       </div>
       <div className="w-[75%] mt-12 flex flex-col gap-4">
@@ -164,21 +235,33 @@ const Footer = () => {
         </p>
       </div>
       <div className="w-[55%] flex mt-12 justify-between">
-        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">NSE</button>{" "}
-        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">BSE</button>{" "}
-        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">MCX</button>{" "}
+        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
+          NSE
+        </button>{" "}
+        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
+          BSE
+        </button>{" "}
+        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
+          MCX
+        </button>{" "}
         <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
           Terms & conditions
         </button>{" "}
         <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
           Policies & procedures
         </button>{" "}
-        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">Privacy policy</button>{" "}
-        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">Disclosure</button>{" "}
+        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
+          Privacy policy
+        </button>{" "}
+        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
+          Disclosure
+        </button>{" "}
         <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
           For investor's attention
         </button>{" "}
-        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">Investor charter</button>
+        <button className="text-[#9B9B9B] text-[12px] hover:text-[#387ED1] transition-all ease-in-out duration-200">
+          Investor charter
+        </button>
       </div>
     </div>
   );

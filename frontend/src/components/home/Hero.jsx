@@ -1,5 +1,6 @@
 import React from "react";
 import homeHero from "../../assets/images/homeHero.png";
+import {Link} from 'react-router-dom'
 const Hero = () => {
   return (
     <div className="w-full flex flex-col items-center mt-10">
@@ -13,9 +14,9 @@ const Hero = () => {
           bonds, and more.
         </p>
 
-        <button className="py-3 mt-4 px-8 text-xl bg-[#387ED1] rounded-md w-fit text-white">
+        <Link to={"/signup"} className="py-3 mt-4 px-8 text-xl bg-[#387ED1] rounded-md w-fit text-white">
           Sign up for free
-        </button>
+        </Link>
       </div>
     </div>
   );

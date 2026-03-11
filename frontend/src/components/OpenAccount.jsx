@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const OpenAccount = () => {
   return (
     <div className="w-full flex justify-center mt-32">
@@ -9,9 +9,12 @@ const OpenAccount = () => {
           Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and
           F&O trades.
         </h2>
-        <button className="py-3 mt-4 px-8 text-xl bg-[#387ED1] rounded-md w-fit text-white">
+        <Link
+          to={"/signup"}
+          className="py-3 mt-4 px-8 text-xl bg-[#387ED1] rounded-md w-fit text-white"
+        >
           Sign up for free
-        </button>
+        </Link>
       </div>
     </div>
   );

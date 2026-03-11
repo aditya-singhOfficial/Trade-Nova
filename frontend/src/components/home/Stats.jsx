@@ -1,6 +1,7 @@
 import React from "react";
 import Ecosystem from "../../assets/images/ecosystem.png";
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 const Stats = () => {
   return (
     <>
@@ -46,15 +47,21 @@ const Stats = () => {
             </div>
           </div>
           <div className="w-[50%] flex flex-col gap-4">
-            <img src={Ecosystem} alt=""  className="w-[95%]"/>
+            <img src={Ecosystem} alt="" className="w-[95%]" />
             <div className="mx-auto flex gap-6 ">
-              <button className="text-blue-400 hover:text-black transition-all ease-in-out duration-200 font-medium flex gap-2 items-center cursor-pointer">
+              <Link
+                to={"/products"}
+                className="text-blue-400 hover:text-black transition-all ease-in-out duration-200 font-medium flex gap-2 items-center cursor-pointer"
+              >
                 Explore our products <FaArrowRight />
-              </button>
-              <button className="text-blue-400 hover:text-black transition-all ease-in-out duration-200 font-medium flex gap-2 items-center cursor-pointer">
+              </Link>
+              <Link
+                to={"/"}
+                className="text-blue-400 hover:text-black transition-all ease-in-out duration-200 font-medium flex gap-2 items-center cursor-pointer"
+              >
                 Try Kite demo
                 <FaArrowRight />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
