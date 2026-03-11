@@ -8,6 +8,7 @@ import Support from "./pages/support/Support";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import NotFound from './pages/notfound/NotFound'
 const App = () => {
   return (
     <>
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/products" element={<Products />} />
         <Route path="/support" element={<Support />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
