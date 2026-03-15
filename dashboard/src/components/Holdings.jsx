@@ -1,13 +1,13 @@
 import React from "react";
-
+import { holdings } from "../data/data";
 const Holdings = () => {
   return (
     <div className="w-full">
       <h1 className="border-b-2 p-6 text-3xl w-full border-[#EEEEEE]">
-        Holdings(13)
+        Holdings({holdings.length})
       </h1>
-      <div className="w-full">
-        <table className="w-full border-b-2 border-[#EEEEEE]">
+      <div className="w-full max-h-[50vh] overflow-y-auto">
+        <table className="w-full border-b-2 border-[#EEEEEE] ">
           <thead className="border-b border-gray-200">
             <tr className="text-gray-500 text-left">
               <th className="p-6">Investment</th>
@@ -20,8 +20,30 @@ const Holdings = () => {
               <th className="p-6">Day Chng.</th>
             </tr>
           </thead>
+          {holdings.map((stock, index) => {
+            const curValue = stock.price * stock.qty;
+            const isProfit = curValue - stock.avg * stock.qty >= 0.0;
+            const profClass = isProfit ? "text-green-500" : "text-red-500";
+            const dayClass = stock.isLoss ? "text-red-500" : "text-green-500";
+
+             return (
+              <tr key={index}>
+                <td className="p-6">{stock.name}</td>
+                <td className="p-6">{stock.qty}</td>
+                <td className="p-6">{stock.avg.toFixed(2)}</td>
+                <td className="p-6">{stock.price.toFixed(2)}</td>
+                <td className="p-6">{curValue.toFixed(2)}</td>
+                <td className={`p-6 ${profClass}`}>
+                  {(curValue - stock.avg * stock.qty).toFixed(2)}
+                </td>
+                <td className={`p-6 ${profClass}`}>{stock.net}</td>
+                <td className={`p-6 {dayClass}`}>{stock.day}</td>
+              </tr>
+            );
+          })}
         </table>
-        <div className="flex justify-between w-[75%] mt-16">
+      </div>
+      <div className="flex justify-between w-[75%] mt-16">
           <div className="flex flex-col">
             <h1 className="px-6 py-3 text-xl">
               29,875.
@@ -48,7 +70,6 @@ const Holdings = () => {
             <p className="px-6 py-3 text-[12px] text-gray-500">P&L</p>
           </div>
         </div>
-      </div>
     </div>
   );
 };
