@@ -9,9 +9,9 @@ import Funds from "../Funds";
 import Apps from "../Apps";
 const Dashboard = () => {
   return (
-    <div>
+    <div className="flex w-full">
       <WatchList />
-      <div className="">
+      <div className="w-[75%]">
         <Routes>
           <Route exact path="/" element={<Summary />} />
           <Route exact path="/orders" element={<Orders />} />
