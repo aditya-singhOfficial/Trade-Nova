@@ -78,7 +78,7 @@ const WatchListAction = ({ uid }) => {
           arrow
           TransitionComponent={Grow}
         >
-          <button className="bg-[#24c657] text-white w-[40px] h-[30px] rounded-md text-center mr-[8px] cursor-pointer text-[0.8rem] border-[0.7px] border-[#24c657]">
+          <button className="bg-[#24c657] text-white w-10 h-7.5 rounded-md text-center mr-2 cursor-pointer text-[0.8rem] border-[0.7px] border-[#24c657]">
             Buy
           </button>
         </Tooltip>
@@ -88,7 +88,7 @@ const WatchListAction = ({ uid }) => {
           arrow
           TransitionComponent={Grow}
         >
-          <button className="bg-[#ff5722] text-white text-[0.8rem] border-[0.7px] border-[#ff5722] w-[40px] h-[30px] rounded-md text-center mr-[8px] cursor-pointer">
+          <button className="bg-[#ff5722] text-white text-[0.8rem] border-[0.7px] border-[#ff5722] w-10 h-7.5 rounded-md text-center mr-2 cursor-pointer">
             Sell
           </button>
         </Tooltip>
@@ -98,12 +98,12 @@ const WatchListAction = ({ uid }) => {
           arrow
           TransitionComponent={Grow}
         >
-          <button className="bg-[#4184f3] text-white text-[0.8rem] border-[0.7px]  w-[40px] h-[30px] rounded-md text-center mr-[8px] cursor-pointer">
+          <button className="bg-[#4184f3] text-white text-[0.8rem] border-[0.7px]  w-10 h-7.5 rounded-md text-center mr-2 cursor-pointer">
             <BarChartIcon />
           </button>
         </Tooltip>
         <Tooltip title="More" placement="top" arrow TransitionComponent={Grow}>
-          <button className="bg-purple-700 text-white text-[0.8rem] border-[0.7px]  w-[40px] h-[30px] rounded-md text-center mr-[8px] cursor-pointer">
+          <button className="bg-purple-700 text-white text-[0.8rem] border-[0.7px]  w-10 h-7.5 rounded-md text-center mr-2 cursor-pointer">
             <MoreHorizIcon />
           </button>
         </Tooltip>
