@@ -7,22 +7,20 @@ const LeftImage = ({
   imageURL,
   productName,
   productDescription,
-  tryDemo = true,
-  learnMore = true,
+  tryDemo,
+  learnMore,
+  coin,
+  kiteConnect,
 }) => {
   return (
     <div className="w-full flex justify-center mt-32">
       <div className="w-[75%] flex justify-between">
-        <div className="w-[55%]">
-          <img src={kiteURL} alt="kite" className="w-[80%]"/>
+        <div className="w-[55%] flex justify-center">
+          <img src={imageURL} alt="kite" className="w-[80%]" />
         </div>
         <div className="w-[40%] flex flex-col gap-6 justify-center">
-          <h1 className="text-2xl">Kite</h1>
-          <h2 className="text-md text-[#424242]">
-            Our ultra-fast flagship trading platform with streaming market data,
-            advanced charts, an elegant UI, and more. Enjoy the Kite experience
-            seamlessly on your Android and iOS devices.
-          </h2>
+          <h1 className="text-2xl">{productName}</h1>
+          <h2 className="text-md text-[#424242]">{productDescription}</h2>
           <div className="flex gap-6">
             {tryDemo && (
               <p className="flex items-center gap-2 text-[#387ED1]">
@@ -32,6 +30,16 @@ const LeftImage = ({
             {learnMore && (
               <p className="flex items-center gap-2 text-[#387ED1]">
                 Learn More <FaArrowRight size={16} />
+              </p>
+            )}
+            {kiteConnect && (
+              <p className="flex items-center gap-2 text-[#387ED1]">
+                Kite Connect <FaArrowRight size={16} />
+              </p>
+            )}
+            {coin && (
+              <p className="flex items-center gap-2 text-[#387ED1]">
+                Coin <FaArrowRight size={16} />
               </p>
             )}
           </div>
