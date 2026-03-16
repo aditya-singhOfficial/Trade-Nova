@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo, useCallback } from "react";
 import { Tooltip, Grow } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -9,9 +9,12 @@ import BuyWindow from "../components/BuyWindow";
 
 const WatchList = () => {
   const [activeBuyStock, setActiveBuyStock] = useState(null);
+  const handleCloseBuyWindow = useCallback(() => {
+    setActiveBuyStock(null);
+  }, []);
 
   return (
-    <div className="w-[25%] h-[91vh] flex flex-col border-r-2 border-[#EEEEEE]">
+    <div className="w-[25%] max-h-[91vh] overflow-y-auto overflow-x-hidden h-[91vh] flex flex-col border-r-2 border-[#EEEEEE]">
       <div className="relative w-full h-fit">
         <input
           type="text"
@@ -24,12 +27,13 @@ const WatchList = () => {
       </div>
 
       <ul className="flex flex-col">
-        {watchlist.map((stock, index) => (
+        {watchlist.map((stock) => (
           <WatchListItem
-            key={index}
+            key={stock.name}
             stock={stock}
             activeBuyStock={activeBuyStock}
             setActiveBuyStock={setActiveBuyStock}
+            onClose={handleCloseBuyWindow}
           />
         ))}
       </ul>
@@ -38,8 +42,7 @@ const WatchList = () => {
 };
 
 export default WatchList;
-
-const WatchListItem = ({ stock, activeBuyStock, setActiveBuyStock }) => {
+const WatchListItem = memo(({ stock, activeBuyStock, setActiveBuyStock, onClose }) => {
   const isBuyOpen = activeBuyStock === stock.name;
 
   return (
@@ -68,7 +71,7 @@ const WatchListItem = ({ stock, activeBuyStock, setActiveBuyStock }) => {
         <BuyWindow
           stockCurrPrice={stock.price}
           uid={stock.name}
-          close={() => setActiveBuyStock(null)}
+          close={onClose}
         />
       )}
 
@@ -81,7 +84,9 @@ const WatchListItem = ({ stock, activeBuyStock, setActiveBuyStock }) => {
       )}
     </li>
   );
-};
+});
+
+WatchListItem.displayName = "WatchListItem";
 
 const WatchListAction = ({ uid, setActiveBuyStock }) => {
   const handleBuyWindowOpen = () => {
@@ -89,11 +94,11 @@ const WatchListAction = ({ uid, setActiveBuyStock }) => {
   };
 
   return (
-    <span className="absolute top-2.5 right-0 hidden group-hover:flex bg-gray-100">
+    <div className="absolute top-2.5 right-0 hidden group-hover:flex bg-gray-100">
       <Tooltip title="Buy (B)" placement="top" arrow TransitionComponent={Grow}>
         <button
           onClick={handleBuyWindowOpen}
-          className="bg-[#24c657] text-white w-10 h-7.5 rounded-md mr-2 text-[0.8rem]"
+          className="bg-[#24c657] text-white w-10 h-8 rounded-md mr-2 text-[0.8rem]"
         >
           Buy
         </button>
@@ -105,7 +110,7 @@ const WatchListAction = ({ uid, setActiveBuyStock }) => {
         arrow
         TransitionComponent={Grow}
       >
-        <button className="bg-[#ff5722] text-white w-10 h-7.5 rounded-md mr-2 text-[0.8rem]">
+        <button className="bg-[#ff5722] text-white w-10 h-8 rounded-md mr-2 text-[0.8rem]">
           Sell
         </button>
       </Tooltip>
@@ -116,16 +121,16 @@ const WatchListAction = ({ uid, setActiveBuyStock }) => {
         arrow
         TransitionComponent={Grow}
       >
-        <button className="bg-[#4184f3] text-white w-10 h-7.5 rounded-md mr-2 flex items-center justify-center">
+        <button className="bg-[#4184f3] text-white w-10 h-8 rounded-md mr-2 flex items-center justify-center">
           <BarChartIcon fontSize="small" />
         </button>
       </Tooltip>
 
       <Tooltip title="More" placement="top" arrow TransitionComponent={Grow}>
-        <button className="bg-purple-700 text-white w-10 h-7.5 rounded-md flex items-center justify-center">
+        <button className="bg-purple-700 text-white w-10 h-8 rounded-md flex items-center justify-center">
           <MoreHorizIcon fontSize="small" />
         </button>
       </Tooltip>
-    </span>
+    </div>
   );
 };

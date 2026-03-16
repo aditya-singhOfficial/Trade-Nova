@@ -1,58 +1,64 @@
 export const watchlist = [
-  {
-    name: "INFY",
-    price: 1555.45,
-    percent: "-1.60%",
-    isDown: true,
-  },
-  {
-    name: "ONGC",
-    price: 116.8,
-    percent: "-0.09%",
-    isDown: true,
-  },
-  {
-    name: "TCS",
-    price: 3194.8,
-    percent: "-0.25%",
-    isDown: true,
-  },
-  {
-    name: "KPITTECH",
-    price: 266.45,
-    percent: "3.54%",
-    isDown: false,
-  },
-  {
-    name: "QUICKHEAL",
-    price: 308.55,
-    percent: "-0.15%",
-    isDown: true,
-  },
-  {
-    name: "WIPRO",
-    price: 577.75,
-    percent: "0.32%",
-    isDown: false,
-  },
-  {
-    name: "M&M",
-    price: 779.8,
-    percent: "-0.01%",
-    isDown: true,
-  },
-  {
-    name: "RELIANCE",
-    price: 2112.4,
-    percent: "1.44%",
-    isDown: false,
-  },
-  {
-    name: "HUL",
-    price: 512.4,
-    percent: "1.04%",
-    isDown: false,
-  },
+  { name: "RELIANCE", price: 2850.40, percent: "0.85%", isDown: false },
+  { name: "HDFCBANK", price: 1625.30, percent: "-0.42%", isDown: true },
+  { name: "ICICIBANK", price: 1095.20, percent: "0.56%", isDown: false },
+  { name: "SBIN", price: 735.15, percent: "-0.31%", isDown: true },
+  { name: "INFY", price: 1555.45, percent: "-1.60%", isDown: true },
+  { name: "TCS", price: 3812.70, percent: "0.24%", isDown: false },
+  { name: "WIPRO", price: 577.75, percent: "0.32%", isDown: false },
+  { name: "HCLTECH", price: 1621.50, percent: "-0.18%", isDown: true },
+  { name: "TECHM", price: 1298.10, percent: "0.11%", isDown: false },
+  { name: "LT", price: 3720.40, percent: "-0.45%", isDown: true },
+
+  { name: "TATAMOTORS", price: 987.55, percent: "1.20%", isDown: false },
+  { name: "MARUTI", price: 12455.30, percent: "0.50%", isDown: false },
+  { name: "BAJAJ-AUTO", price: 9365.80, percent: "-0.65%", isDown: true },
+  { name: "EICHERMOT", price: 4210.20, percent: "0.40%", isDown: false },
+  { name: "HEROMOTOCO", price: 4575.10, percent: "-0.30%", isDown: true },
+
+  { name: "HINDUNILVR", price: 2415.40, percent: "0.75%", isDown: false },
+  { name: "ITC", price: 432.85, percent: "-0.12%", isDown: true },
+  { name: "NESTLEIND", price: 2525.60, percent: "0.62%", isDown: false },
+  { name: "BRITANNIA", price: 5030.10, percent: "-0.28%", isDown: true },
+  { name: "DABUR", price: 548.20, percent: "0.33%", isDown: false },
+
+  { name: "BHARTIARTL", price: 1288.70, percent: "0.55%", isDown: false },
+  { name: "IDEA", price: 13.20, percent: "-0.40%", isDown: true },
+  { name: "TATACOMM", price: 1898.50, percent: "0.90%", isDown: false },
+
+  { name: "ASIANPAINT", price: 3090.15, percent: "-0.22%", isDown: true },
+  { name: "PIDILITIND", price: 2855.60, percent: "0.48%", isDown: false },
+  { name: "BERGEPAINT", price: 545.30, percent: "-0.33%", isDown: true },
+
+  { name: "ULTRACEMCO", price: 10120.40, percent: "0.29%", isDown: false },
+  { name: "GRASIM", price: 2215.80, percent: "-0.36%", isDown: true },
+  { name: "SHREECEM", price: 28750.10, percent: "0.15%", isDown: false },
+
+  { name: "ADANIENT", price: 3185.50, percent: "1.25%", isDown: false },
+  { name: "ADANIPORTS", price: 1395.80, percent: "-0.21%", isDown: true },
+  { name: "ADANIGREEN", price: 1875.40, percent: "0.72%", isDown: false },
+  { name: "ADANIPOWER", price: 665.20, percent: "-0.48%", isDown: true },
+
+  { name: "SUNPHARMA", price: 1620.45, percent: "0.44%", isDown: false },
+  { name: "DRREDDY", price: 6120.30, percent: "-0.31%", isDown: true },
+  { name: "CIPLA", price: 1480.50, percent: "0.22%", isDown: false },
+  { name: "DIVISLAB", price: 3920.75, percent: "-0.20%", isDown: true },
+
+  { name: "COALINDIA", price: 475.60, percent: "0.66%", isDown: false },
+  { name: "NTPC", price: 345.90, percent: "-0.15%", isDown: true },
+  { name: "POWERGRID", price: 292.10, percent: "0.31%", isDown: false },
+
+  { name: "TATASTEEL", price: 158.25, percent: "-0.55%", isDown: true },
+  { name: "JSWSTEEL", price: 885.30, percent: "0.42%", isDown: false },
+  { name: "HINDALCO", price: 675.45, percent: "-0.19%", isDown: true },
+
+  { name: "BAJFINANCE", price: 7420.80, percent: "0.74%", isDown: false },
+  { name: "BAJAJFINSV", price: 1635.50, percent: "-0.27%", isDown: true },
+  { name: "KOTAKBANK", price: 1785.90, percent: "0.36%", isDown: false },
+
+  { name: "ZOMATO", price: 165.75, percent: "1.10%", isDown: false },
+  { name: "PAYTM", price: 395.60, percent: "-0.95%", isDown: true },
+  { name: "IRCTC", price: 1045.40, percent: "0.50%", isDown: false }
 ];
 
 // holdings
