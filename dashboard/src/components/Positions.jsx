@@ -1,10 +1,20 @@
-import React from "react";
-import { positions } from "../data/data";
+import React, { useEffect, useState } from "react";
+import api from "../utils/axios";
 const Positions = () => {
+  const [allPositions, setAllPositions] = useState([]);
+  const getPositions = async () => {
+    const tempPositions = await api.get("/allPositions");
+    setAllPositions(tempPositions.data.positions);
+  };
+
+  useEffect(() => {
+    getPositions();
+  }, []);
+
   return (
     <div className="w-full">
       <h1 className="border-b-2 p-6 text-3xl w-full border-[#EEEEEE]">
-        Positions({positions.length})
+        Positions({allPositions.length})
       </h1>
       <div className="w-full max-h-[65vh] overflow-y-auto">
         <table className="w-full border-b-2 border-[#EEEEEE]">
@@ -19,7 +29,7 @@ const Positions = () => {
               <th className="p-6">Chng.</th>
             </tr>
           </thead>
-          {positions.map((stock, index) => {
+          {allPositions.map((stock, index) => {
             const curValue = stock.price * stock.qty;
             const isProfit = curValue - stock.avg * stock.qty >= 0.0;
             const profClass = isProfit ? "text-green-500" : "text-red-500";
