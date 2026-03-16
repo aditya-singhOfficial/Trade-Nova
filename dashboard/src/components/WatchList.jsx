@@ -24,16 +24,14 @@ const WatchList = () => {
       </div>
 
       <ul className="flex flex-col">
-        {watchlist.map((stock, index) => {
-          return (
-            <WatchListItem
-              stock={stock}
-              key={index}
-              activeBuyStock={activeBuyStock}
-              setActiveBuyStock={setActiveBuyStock}
-            />
-          );
-        })}
+        {watchlist.map((stock, index) => (
+          <WatchListItem
+            key={index}
+            stock={stock}
+            activeBuyStock={activeBuyStock}
+            setActiveBuyStock={setActiveBuyStock}
+          />
+        ))}
       </ul>
     </div>
   );
@@ -42,24 +40,10 @@ const WatchList = () => {
 export default WatchList;
 
 const WatchListItem = ({ stock, activeBuyStock, setActiveBuyStock }) => {
-  const [showWatchListActions, setshowWatchListActions] = useState(false);
-
-  const handleMouseEnter = () => {
-    if (activeBuyStock !== stock.name) {
-      setshowWatchListActions(true);
-    }
-  };
-
-  const handleMouseExit = () => {
-    setshowWatchListActions(false);
-  };
+  const isBuyOpen = activeBuyStock === stock.name;
 
   return (
-    <li
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseExit}
-      className="w-full relative hover:bg-gray-100 cursor-pointer transition-all duration-100 ease-in-out"
-    >
+    <li className="group w-full relative hover:bg-gray-100 cursor-pointer transition-all duration-100 ease-in-out">
       <div className="flex w-full justify-between px-2 py-3">
         <p className={`${stock.isDown ? "text-red-500" : "text-green-500"}`}>
           {stock.name}
@@ -80,12 +64,16 @@ const WatchListItem = ({ stock, activeBuyStock, setActiveBuyStock }) => {
       </div>
 
       {/* BUY WINDOW */}
-      {activeBuyStock === stock.name && (
-        <BuyWindow uid={stock.name} close={() => setActiveBuyStock(null)} />
+      {isBuyOpen && (
+        <BuyWindow
+          stockCurrPrice={stock.price}
+          uid={stock.name}
+          close={() => setActiveBuyStock(null)}
+        />
       )}
 
       {/* ACTION BUTTONS */}
-      {showWatchListActions && activeBuyStock !== stock.name && (
+      {!isBuyOpen && (
         <WatchListAction
           uid={stock.name}
           setActiveBuyStock={setActiveBuyStock}
@@ -101,35 +89,43 @@ const WatchListAction = ({ uid, setActiveBuyStock }) => {
   };
 
   return (
-    <span className="absolute top-2.5 right-0 bg-gray-100">
-      <span className="w-full h-full">
-        <Tooltip title="Buy (B)" placement="top" arrow TransitionComponent={Grow}>
-          <button
-            onClick={handleBuyWindowOpen}
-            className="bg-[#24c657] text-white w-10 h-7.5 rounded-md text-center mr-2 cursor-pointer text-[0.8rem] border-[0.7px] border-[#24c657]"
-          >
-            Buy
-          </button>
-        </Tooltip>
+    <span className="absolute top-2.5 right-0 hidden group-hover:flex bg-gray-100">
+      <Tooltip title="Buy (B)" placement="top" arrow TransitionComponent={Grow}>
+        <button
+          onClick={handleBuyWindowOpen}
+          className="bg-[#24c657] text-white w-10 h-7.5 rounded-md mr-2 text-[0.8rem]"
+        >
+          Buy
+        </button>
+      </Tooltip>
 
-        <Tooltip title="Sell (S)" placement="top" arrow TransitionComponent={Grow}>
-          <button className="bg-[#ff5722] text-white text-[0.8rem] border-[0.7px] border-[#ff5722] w-10 h-7.5 rounded-md text-center mr-2 cursor-pointer">
-            Sell
-          </button>
-        </Tooltip>
+      <Tooltip
+        title="Sell (S)"
+        placement="top"
+        arrow
+        TransitionComponent={Grow}
+      >
+        <button className="bg-[#ff5722] text-white w-10 h-7.5 rounded-md mr-2 text-[0.8rem]">
+          Sell
+        </button>
+      </Tooltip>
 
-        <Tooltip title="Analytics (A)" placement="top" arrow TransitionComponent={Grow}>
-          <button className="bg-[#4184f3] text-white text-[0.8rem] border-[0.7px] w-10 h-7.5 rounded-md text-center mr-2 cursor-pointer">
-            <BarChartIcon />
-          </button>
-        </Tooltip>
+      <Tooltip
+        title="Analytics (A)"
+        placement="top"
+        arrow
+        TransitionComponent={Grow}
+      >
+        <button className="bg-[#4184f3] text-white w-10 h-7.5 rounded-md mr-2 flex items-center justify-center">
+          <BarChartIcon fontSize="small" />
+        </button>
+      </Tooltip>
 
-        <Tooltip title="More" placement="top" arrow TransitionComponent={Grow}>
-          <button className="bg-purple-700 text-white text-[0.8rem] border-[0.7px] w-10 h-7.5 rounded-md text-center mr-2 cursor-pointer">
-            <MoreHorizIcon />
-          </button>
-        </Tooltip>
-      </span>
+      <Tooltip title="More" placement="top" arrow TransitionComponent={Grow}>
+        <button className="bg-purple-700 text-white w-10 h-7.5 rounded-md flex items-center justify-center">
+          <MoreHorizIcon fontSize="small" />
+        </button>
+      </Tooltip>
     </span>
   );
 };

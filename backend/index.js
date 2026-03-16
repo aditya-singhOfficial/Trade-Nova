@@ -4,6 +4,7 @@ const express = require("express");
 const { connectToDB } = require("./config/mongooseConfig");
 const { HoldingModel } = require("./models/HoldingModel")
 const { PositionsModel } = require("./models/PositionsModel")
+const { OrdersModel } = require("./models/OrdersModel")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 
@@ -41,6 +42,52 @@ app.get("/allPositions", async (req, res) => {
             message: "Internal Server Error"
         })
     }
+})
+
+app.post("/newOrder", async (req, res) => {
+    const newOrder = new OrdersModel({
+        name: req.body.name,
+        qty: req.body.qty,
+        price: req.body.price,
+        mode: req.body.mode,
+    })
+    newOrder.save();
+
+    const stock = await HoldingModel.findOne({ name: req.body.name });
+
+    if (stock) {
+        const buyQty = parseInt(req.body.qty);
+        const buyPrice = parseFloat(req.body.price);
+
+        const newQty = stock.qty + buyQty;
+
+        const totalInvestment =
+            stock.qty * stock.avg + buyQty * buyPrice;
+
+        const newAvg = totalInvestment / newQty;
+
+        stock.qty = newQty;
+        stock.avg = newAvg;
+        stock.price = buyPrice;
+
+        await stock.save();
+        res.json({ message: "Stock Updated", stock });
+    } else {
+        const newStock = await HoldingModel.create({
+            name: req.body.name,
+            qty: req.body.qty,
+            avg: req.body.price,
+            price: req.body.price,
+            net: "+0%",
+            day: "+0%"
+        });
+    }
+
+
+    res.status(200).json({
+        success: true,
+        message: "Order created successfully"
+    })
 })
 
 app.listen(PORT, () => {
