@@ -5,12 +5,14 @@ const { connectToDB } = require("./config/mongooseConfig");
 const { HoldingModel } = require("./models/HoldingModel")
 const { PositionsModel } = require("./models/PositionsModel")
 const cors = require("cors")
+const bodyParser = require("body-parser")
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 connectToDB();
-app.use(cors())
+app.use(cors());
+app.use(bodyParser.json());
 app.get("/allHoldings", async (req, res) => {
     try {
         let allHoldings = await HoldingModel.find({});
