@@ -1,10 +1,19 @@
-import React from "react";
-import { holdings } from "../data/data";
+import React, { useEffect, useState } from "react";
+import api from "../utils/axios";
 const Holdings = () => {
+  const [allHoldings, setAllHoldings] = useState([]);
+
+  const getHodings = async () => {
+    const tempHoldings = await api.get("/allHoldings");
+    setAllHoldings(tempHoldings.data.holdings);
+  };
+  useEffect(() => {
+    if (allHoldings.length <= 0) getHodings();
+  }, []);
   return (
     <div className="w-full">
       <h1 className="border-b-2 p-6 text-3xl w-full border-[#EEEEEE]">
-        Holdings({holdings.length})
+        Holdings({allHoldings.length})
       </h1>
       <div className="w-full max-h-[50vh] overflow-y-auto">
         <table className="w-full border-b-2 border-[#EEEEEE] ">
@@ -20,13 +29,13 @@ const Holdings = () => {
               <th className="p-6">Day Chng.</th>
             </tr>
           </thead>
-          {holdings.map((stock, index) => {
+          {allHoldings.map((stock, index) => {
             const curValue = stock.price * stock.qty;
             const isProfit = curValue - stock.avg * stock.qty >= 0.0;
             const profClass = isProfit ? "text-green-500" : "text-red-500";
             const dayClass = stock.isLoss ? "text-red-500" : "text-green-500";
 
-             return (
+            return (
               <tr key={index}>
                 <td className="p-6">{stock.name}</td>
                 <td className="p-6">{stock.qty}</td>
@@ -44,32 +53,30 @@ const Holdings = () => {
         </table>
       </div>
       <div className="flex justify-between w-[75%] mt-16">
-          <div className="flex flex-col">
-            <h1 className="px-6 py-3 text-xl">
-              29,875.
-              <br />
-              <span className="text-gray-500 text-[16px]">55</span>
-            </h1>
-            <p className="px-6 py-3 text-[12px] text-gray-500">
-              Total Investment
-            </p>
-          </div>
-
-          <div className="flex flex-col">
-            <h1 className="px-6 py-3 text-xl">
-              31,428.
-              <br />
-              <span className="text-gray-500 text-[16px]">95</span>
-            </h1>
-            <p className="px-6 py-3 text-[12px] text-gray-500">Current Value</p>
-          </div>
-          <div className="flex flex-col gap-8">
-            <h1 className="px-6 py-3 text-xl text-green-500">
-              1553.40(+5.20%)
-            </h1>
-            <p className="px-6 py-3 text-[12px] text-gray-500">P&L</p>
-          </div>
+        <div className="flex flex-col">
+          <h1 className="px-6 py-3 text-xl">
+            29,875.
+            <br />
+            <span className="text-gray-500 text-[16px]">55</span>
+          </h1>
+          <p className="px-6 py-3 text-[12px] text-gray-500">
+            Total Investment
+          </p>
         </div>
+
+        <div className="flex flex-col">
+          <h1 className="px-6 py-3 text-xl">
+            31,428.
+            <br />
+            <span className="text-gray-500 text-[16px]">95</span>
+          </h1>
+          <p className="px-6 py-3 text-[12px] text-gray-500">Current Value</p>
+        </div>
+        <div className="flex flex-col gap-8">
+          <h1 className="px-6 py-3 text-xl text-green-500">1553.40(+5.20%)</h1>
+          <p className="px-6 py-3 text-[12px] text-gray-500">P&L</p>
+        </div>
+      </div>
     </div>
   );
 };

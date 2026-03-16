@@ -4,12 +4,13 @@ const express = require("express");
 const { connectToDB } = require("./config/mongooseConfig");
 const { HoldingModel } = require("./models/HoldingModel")
 const { PositionsModel } = require("./models/PositionsModel")
+const cors = require("cors")
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 connectToDB();
-
+app.use(cors())
 app.get("/allHoldings", async (req, res) => {
     try {
         let allHoldings = await HoldingModel.find({});
