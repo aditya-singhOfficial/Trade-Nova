@@ -1,17 +1,38 @@
 import React, { useEffect, useState } from "react";
 import api from "../utils/axios";
+import { VerticalChart } from "./VerticalChart";
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
+
+  const labels = allHoldings.map((item) => item["name"]);
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Price",
+        data: allHoldings.map((stock) => stock.price),
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "Average",
+        data: allHoldings.map((stock) => stock.avg),
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
 
   const getHodings = async () => {
     const tempHoldings = await api.get("/allHoldings");
     setAllHoldings(tempHoldings.data.holdings);
   };
+
   useEffect(() => {
     if (allHoldings.length <= 0) getHodings();
   }, []);
+
   return (
-    <div className="w-full">
+    <div className="w-full max-h-[91vh] overflow-y-auto">
       <h1 className="border-b-2 p-6 text-3xl w-full border-[#EEEEEE]">
         Holdings({allHoldings.length})
       </h1>
@@ -77,6 +98,7 @@ const Holdings = () => {
           <p className="px-6 py-3 text-[12px] text-gray-500">P&L</p>
         </div>
       </div>
+      <VerticalChart data={data} />
     </div>
   );
 };
