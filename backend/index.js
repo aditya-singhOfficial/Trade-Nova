@@ -7,6 +7,7 @@ const { PositionsModel } = require("./models/PositionsModel")
 const { OrdersModel } = require("./models/OrdersModel")
 const cors = require("cors")
 const bodyParser = require("body-parser")
+const userRoutes = require("./routes/users.route.js")
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 connectToDB();
 app.use(cors());
 app.use(bodyParser.json());
+app.use("/api/users", userRoutes);
 app.get("/allHoldings", async (req, res) => {
     try {
         let allHoldings = await HoldingModel.find({});

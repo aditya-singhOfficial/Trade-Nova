@@ -9,7 +9,7 @@ const signup = async (req, res) => {
     try {
         if (!name || !username || !email || !password) {
             return res
-                .status(httpStatus.BAD_REQUEST)
+                .status(400)
                 .json({
                     "message": `All fields are required`,
                     "success": false
@@ -19,7 +19,7 @@ const signup = async (req, res) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
         if (!emailRegex.test(email)) {
             return res
-                .status(httpStatus.BAD_REQUEST)
+                .status(400)
                 .json({
                     message: "Invalid email format",
                     "success": false
@@ -31,7 +31,7 @@ const signup = async (req, res) => {
         });
         if (existingUser) {
             return res
-                .status(httpStatus.CONFLICT)
+                .status(409)
                 .json({
                     message: "User already exists",
                     "success": false
@@ -52,7 +52,7 @@ const signup = async (req, res) => {
         await newUser.save();
 
         res
-            .status(httpStatus.CREATED)
+            .status(201)
             .json({
                 "message": `User created successfully`,
                 "success": true
@@ -61,7 +61,7 @@ const signup = async (req, res) => {
     } catch (error) {
         console.error(error);
         res
-            .status(httpStatus.INTERNAL_SERVER_ERROR)
+            .status(500)
             .json({
                 "message": `Something went wrong!`,
                 "success": false
@@ -75,7 +75,7 @@ const login = async (req, res) => {
     try {
         if (!email || !password) {
             return res
-                .status(httpStatus.BAD_REQUEST)
+                .status(400)
                 .json({
                     "message": `All fields are required`,
                     "success": false
@@ -85,7 +85,7 @@ const login = async (req, res) => {
         const userExists = await User.findOne({ email: email.toLowerCase() })
         if (!userExists) {
             return res
-                .status(httpStatus.NOT_FOUND)
+                .status(404)
                 .json({
                     message: "User does not exist",
                     "success": false
@@ -95,7 +95,7 @@ const login = async (req, res) => {
         const isMatch = await bcrypt.compare(password, userExists.password);
         if (!isMatch) {
             return res
-                .status(httpStatus.BAD_REQUEST)
+                .status(400)
                 .json({
                     "message": `Invalid Credentials`,
                     "success": false
@@ -106,7 +106,7 @@ const login = async (req, res) => {
         userExists.token = token;
         await userExists.save();
 
-        res.status(httpStatus.OK).json({
+        res.status(200).json({
             "message": `User logged in successfully`,
             "token": token,
             "success": true
@@ -114,7 +114,7 @@ const login = async (req, res) => {
     } catch (error) {
         console.error(error);
         res
-            .status(httpStatus.INTERNAL_SERVER_ERROR)
+            .status(500)
             .json({
                 "message": `Something went wrong!`,
                 "success": false
