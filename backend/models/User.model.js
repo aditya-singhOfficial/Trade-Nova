@@ -28,6 +28,9 @@ const UserSchema = new mongoose.Schema(
         token: {
             type: String,
             default: null
+        },
+        tokenExpiry:{
+            type:Date
         }
     },
     {

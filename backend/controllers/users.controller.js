@@ -103,7 +103,9 @@ const login = async (req, res) => {
         }
 
         const token = crypto.randomBytes(32).toString("hex");
+        const expiry = new Date(Date.now() + 60 * 60 * 1000);
         userExists.token = token;
+        userExists.tokenExpiry = expiry;
         await userExists.save();
 
         res.status(200).json({
